@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 class characters {
 
 	var name;
@@ -81,4 +82,22 @@ class student extends characters {
 	}
 
 
+=======
+var renderer = PIXI.autoDetectRenderer(800, 600);
+document.body.appendChild(renderer);
+
+var stage = new PIXI.Container();
+
+var background = new PIXI.Sprite.fromImage('../GraphicsRF/Assets/Road.png');
+stage.addChild(background);
+
+stage.filters = new [PIXI.filters.VoidFilter()];
+stage.filterArea = new Rectangle(0, 0, 800, 600);
+
+var blobArray = [];
+var numBlobs = 10;
+
+for (var i = 0; i < numBlobs; i++) {
+    var blob = new PIXI.Sprite.fromImage('../GraphicsRF/Assets/');
+>>>>>>> Stashed changes
 }
