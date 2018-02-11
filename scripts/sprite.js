@@ -1,3 +1,5 @@
+
+function car() {
 // create a new Sprite from an image path
 var fung = PIXI.Sprite.fromImage('../GraphicsRF/Assets/car.png')
 
@@ -17,3 +19,4 @@ app.ticker.add(function(delta) {
     // creates frame-independent transformation
     fung.rotation += 0.1 * delta;
 });
+}
