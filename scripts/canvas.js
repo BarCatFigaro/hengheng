@@ -1,95 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-class characters {
-=======
-class Character {
->>>>>>> 8da4ca6a7035f93bc5bcbb81cbd3a170f1ff3917
-
-    constructor(name, type) {
-        his.name = name;
-	    this.type =  type;
-        this.x = 0;
-        this.y = 0;
-    }
-	
-	setName(name)
-	{
-		this.name = name;
-	};
-
-	getName()
-	{
-		return this.name;
-	};
-
-	setType(type)
-	{
-		this.type = type;
-	};
-
-	getType()
-	{
-		return this.type;	
-	};
-
-	move(newX, newY)
-	{
-		this.x += newX;
-		this.y += newY;
-	};
-
-	getRandInt(max)
-	{
-		return Math.floor(Math.random() * Math.floor(max));		
-	};
-
-}
-
-class Student extends Character {
-
-	constructor(name, type, state)
-	{
-		super.constructor(name, type);
-        this.state = state;
-        this.maxMoveDist = getRandInt(500);
-        this.alive = false;
-	};
-
-	randMoveUp()
-	{
-		for (I = 0; I < maxMoveDist; I++)
-		{
-			move(0,-1)
-		}
-	};
-
-	randMoveSide()
-	{
-		var randDir = getRandInt(1);
-		if (randDir = 0)
-		{
-			for (I = 0; I < maxMoveDist; I++)
-			{
-				move(-1,0);
-			}
-		}
-		else
-		{
-			for (I = 0; I < maxMoveDist; I++)
-			{
-				move(1, 0);
-			}
-		}
-	};
-
-
-=======
 var renderer = PIXI.autoDetectRenderer(800, 600);
 document.body.appendChild(renderer.view);
 
 var stage = new PIXI.Container();
 
-var background = new PIXI.Sprite.fromImage('../GraphicsRF/Assets/car.png');
+var background = new PIXI.Sprite.fromImage('../GraphicsRF/Assets/Road.png');
 stage.addChild(background);
 
 stage.filters = [new PIXI.filters.VoidFilter()];
@@ -115,7 +29,6 @@ for (var i = 0; i < numBlobs; i++) {
     blobArray.push(blob);
 
     stage.addChild(blob);
->>>>>>> Stashed changes
 }
 
 var tick = 0;
