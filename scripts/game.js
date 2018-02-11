@@ -18,6 +18,7 @@ let app = new Application({
   transparent: false, 
   resolution: 1 
 });
+
 app.renderer.view.style.position = "absolute";
 app.renderer.view.style.display = "block";
 app.renderer.autoResize = true;
@@ -30,9 +31,22 @@ document.body.appendChild(app.renderer.view);
 let stage = new PIXI.Container();
 
 loader
+  .load("blob", "/GraphicsRF/Characters/blue_stand/blue_stand.png")
+  .load("road", "/GraphicsRF/Assets/Road.png")
   .load(setup)
 
 function setup() {
+  
+}
+
+
+/*
+* In Game UI
+*/
+
+//Title screen
+
+function titleScreen() {
   //Menu
   let startMenu = new Graphics();
   var menuX = window.innerWidth / 3;
@@ -48,7 +62,7 @@ function setup() {
   
   //Title
   let titleStyle = new TextStyle({
-    fontFamily: "Comic Sans",
+    fontFamily: "Airal",
     fontSize: 35,
     fill: "blue",
     stroke: '#ff3300',
@@ -66,7 +80,7 @@ function setup() {
 
   // Options:
   let optionStyle = new TextStyle({
-    fontFamily: "Times New Roman",
+    fontFamily: "Arial",
     fontSize: 35,
     fill: "blue",
     stroke: '#ff3300',
@@ -95,7 +109,7 @@ function setup() {
   startMenu.hitArea = new PIXI.Rectangle(start.x, start.y, start.width, start.height);
   startMenu.on('mousedown', beginGame);
   
-  function beginGame(e) {
+  function beginGame() {
     app.stage.removeChild(startMenu);
     app.stage.removeChild(title);
     app.stage.removeChild(startBox);
@@ -110,27 +124,68 @@ function setup() {
   app.stage.addChild(start);
 }
 
+//
+//
+function startGame() {
+  makeScoreBox();
+}
+
+
+//Score Box mechanics
+//
+function makeScoreBox() {
+  let scoreBox = new Graphics();
+  var scoreB_Width = window.innerWidth / 12;
+  var scoreB_Height = window.innerHeight / 14;
+  var scoreB_X = window.innerWidth - scoreB_Width + scoreB_Width / 2;
+  var scoreB_Y = window.innerHeight + scoreB_Height + scoreB_Height / 2;
+  scoreBox.beginFill(0xf2f7f3);
+  scoreBox.lineStyle(4, 0x000000, 2);
+  scoreBox.drawRect(scoreB_X, scoreB_Y, scoreB_Width, scoreB_Height);
+  scoreBox.endFill();
+  app.stage.addChild(scoreBox);
+
+
+}
+
+//Updating score
+function updateScore() {
+  let scoreStyle = new TextStyle({
+    fontFamily: "Airal",
+    fontSize: 25,
+    fill: "black",
+  });
+
+  var scoreX = scoreB_X + 2;
+  var scoreY = scoreB_Y + 2;
+  let score = new Text(getScore(), scoreStyle);
+  score.position.set(scoreX, scoreY);
+}
+//
+
+//Check if the game can continue
+function checkDeath(player) {
+  if (!player.isAlive) {
+    endGame();
+  }
+}
+//
+
+//Ending when player died
+function endGame() {
+  //TODO
+}
+//
+
+
+/**/
+
 /*
 * Utility
 */
-
-function startGame() {
-  app.renderer.backgroundColor = 0x11111;
-
-  let ggStyle = new TextStyle({
-    fontFamily: "Times New Roman",
-    fontSize: 100,
-    fill: "White",
-    stroke: '#ff3300',
-    strokeThickness: 4,
-    dropShadow: false
-  });
-
-  let startFrame = new Text("JOHN QU IS AMD TRAITOR", ggStyle);
-  startFrame.position.set(getCenteredX(window.innerWidth,startFrame.width), getCenteredX(window.innerHeight, startFrame.height));
-
-  app.stage.addChild(startFrame);
-}
 function getCenteredX(bigWidth, smallWidth) {
   return bigWidth/2 - smallWidth / 2;
 }
+
+/**/
+
