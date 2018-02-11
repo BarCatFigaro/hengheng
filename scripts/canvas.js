@@ -1,58 +1,59 @@
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 class characters {
+=======
+class Character {
+>>>>>>> 8da4ca6a7035f93bc5bcbb81cbd3a170f1ff3917
 
-	var name;
-	var type;
-	var x, y;
-	constructor(name, type)
-	{
-		this.name = name;
-		this.type = type;
-	}
+    constructor(name, type) {
+        his.name = name;
+	    this.type =  type;
+        this.x = 0;
+        this.y = 0;
+    }
 	
 	setName(name)
 	{
 		this.name = name;
-	}
+	};
 
 	getName()
 	{
 		return this.name;
-	}
+	};
 
 	setType(type)
 	{
 		this.type = type;
-	}
+	};
 
 	getType()
 	{
 		return this.type;	
-	}
+	};
 
 	move(newX, newY)
 	{
 		this.x += newX;
 		this.y += newY;
-	}
+	};
 
 	getRandInt(max)
 	{
 		return Math.floor(Math.random() * Math.floor(max));		
-	}
+	};
 
 }
 
-class student extends characters {
-
-	var maxMoveDist = getRandInt(500);
-	var alive;
+class Student extends Character {
 
 	constructor(name, type, state)
 	{
 		super.constructor(name, type);
-		this.state = state;
-	}
+        this.state = state;
+        this.maxMoveDist = getRandInt(500);
+        this.alive = false;
+	};
 
 	randMoveUp()
 	{
@@ -60,7 +61,7 @@ class student extends characters {
 		{
 			move(0,-1)
 		}
-	}
+	};
 
 	randMoveSide()
 	{
@@ -79,7 +80,7 @@ class student extends characters {
 				move(1, 0);
 			}
 		}
-	}
+	};
 
 
 =======
